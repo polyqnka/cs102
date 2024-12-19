@@ -4,12 +4,6 @@ from collections import Counter
 # Регулярное выражение для проверки формата номера телефона
 PHONE_PATTERN = re.compile(r"^\+\d-\d{3}-\d{3}-\d{2}-\d{2}$")
 
-import re
-from collections import Counter
-
-# Регулярное выражение для проверки формата номера телефона
-PHONE_PATTERN = re.compile(r"^\+\d-\d{3}-\d{3}-\d{2}-\d{2}$")
-
 def validate_and_process_orders(orders):
     """
     Проверяет заказы на корректность и разделяет их на валидные и невалидные.
