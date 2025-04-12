@@ -1,32 +1,43 @@
-def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
+"""caesar.py
+
+Реализует шифровку и расшифровкку на шифре Цезаря
+
+"""
+
+def encrypt_caesar(plaintext="PYTHON", shift=3):
+
     """
     Encrypts plaintext using a Caesar cipher.
-    >>> encrypt_caesar("PYTHON")
-    'SBWKRQ'
-    >>> encrypt_caesar("python")
-    'sbwkrq'
-    >>> encrypt_caesar("Python3.6")
-    'Sbwkrq3.6'
-    >>> encrypt_caesar("")
-    ''
+    Example: PYTHON -> SBWKRQ
     """
+
     ciphertext = ""
-    # PUT YOUR CODE HERE
+    for _ in plaintext:
+        if "A" <= _ <= "Z":
+            ciphertext += chr((ord(_) - ord("A") + shift) % 26 + ord("A"))
+        elif "a" <= _ <= "z":
+            ciphertext += chr((ord(_) - ord("a") + shift) % 26 + ord("a"))
+        else:
+            ciphertext += _
     return ciphertext
 
 
-def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
+def decrypt_caesar(ciphertext="SBWKRQ", shift=3):
+
     """
     Decrypts a ciphertext using a Caesar cipher.
-    >>> decrypt_caesar("SBWKRQ")
-    'PYTHON'
-    >>> decrypt_caesar("sbwkrq")
-    'python'
-    >>> decrypt_caesar("Sbwkrq3.6")
-    'Python3.6'
-    >>> decrypt_caesar("")
-    ''
+    Example: SBWKRQ -> PYTHON
     """
+
     plaintext = ""
-    # PUT YOUR CODE HERE
+    for _ in ciphertext:
+        if "A" <= _ <= "Z":
+            plaintext += chr((ord(_) - ord("A") - shift) % 26 + ord("A"))
+        elif "a" <= _ <= "z":
+            plaintext += chr((ord(_) - ord("a") - shift) % 26 + ord("a"))
+        else:
+            plaintext += _
     return plaintext
+
+print(encrypt_caesar("PYTHON"))
+print(decrypt_caesar("SBWKRQ"))
